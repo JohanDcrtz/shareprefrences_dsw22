@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "521089895247",
+    "project_id": "eval3-b15ba",
+    "storage_bucket": "eval3-b15ba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:521089895247:android:ee614f0b4ec6bd54dd533a",
+        "android_client_info": {
+          "package_name": "com.johadaniel.shareprefrences_dsw22"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfVjz2Z4m081DcfpvMRSuz0zgSmYrVgGM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
