@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:shareprefrences_dsw22/firebase_options.dart';
 import 'package:shareprefrences_dsw22/pages/home.dart';
+import 'package:shareprefrences_dsw22/views/login_page.dart';
+import 'package:shareprefrences_dsw22/views/sign_up_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,18 +14,26 @@ void main() async {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      initialRoute: "/login",
+      routes: {
+
+        "/login":(context) => const LoginPage(),
+        "/signup":(context) => const SignUpPage(),
+        
+
+      },
+      home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }
-
