@@ -1,5 +1,7 @@
+// lib/views/login_page.dart
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shareprefrences_dsw22/screens/inventario_screen.dart';
 import 'package:shareprefrences_dsw22/views/sign_up_auth.dart';
 import 'package:shareprefrences_dsw22/widget/input_widget.dart';
 import '../user_auth/firebase_auth_services.dart';
@@ -37,9 +39,7 @@ class _LoginPageState extends State<LoginPage> {
                 "Login",
                 style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold, color: Colors.blue),
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               _InputCustomized(
                 _emailController,
                 false,
@@ -48,15 +48,13 @@ class _LoginPageState extends State<LoginPage> {
                 TextInputType.emailAddress,
                 Icons.email,
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
               InputWidget(
                 controller: _passwordController,
                 hintText: 'Contraseña',
                 isPasswordField: true,
               ),
-              const SizedBox(height: 30,),
+              const SizedBox(height: 30),
               GestureDetector(
                 onTap: _signIn,
                 child: Container(
@@ -74,12 +72,12 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text("¿No tienes una cuenta?"),
-                  const SizedBox(width: 5,),
+                  const SizedBox(width: 5),
                   GestureDetector(
                     onTap: () {
                       Navigator.pushAndRemoveUntil(
@@ -95,7 +93,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              const SizedBox(height: 25,),
+              const SizedBox(height: 25),
               Text(
                 '$mensaje',
                 style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
@@ -113,7 +111,10 @@ class _LoginPageState extends State<LoginPage> {
     User? user = await _auth.signInWithEmailAndPassword(email, password);
     if (user != null) {
       print("Login Satisfactorio!!!");
-      Navigator.pushReplacementNamed(context, "/");
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => InventarioScreen()),
+      );
       setState(() {
         mensaje = "";
       });

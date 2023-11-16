@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:shareprefrences_dsw22/user_auth/firebase_auth_services.dart';
-import 'package:shareprefrences_dsw22/views/login_page.dart';
+import 'package:shareprefrences_dsw22/screens/login_page.dart';
 import 'package:shareprefrences_dsw22/widget/input_widget.dart';
 
 class SignUpPage extends StatefulWidget {
