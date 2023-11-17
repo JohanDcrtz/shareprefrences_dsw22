@@ -161,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
       modelo: 'Outlander',
       ano: 2022,
     ),
-    // ... otros repuestos
+    // ... (otros repuestos)
   ];
 
   List<Repuesto> repuestosFiltrados = [];
@@ -183,6 +183,16 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            Text(
+              '¡Bienvenido a GIGATALLER, Zacatecoluca!',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.italic,
+              ),
+            ),
+            SizedBox(height: 16.0),
             _buildSearchField(),
             SizedBox(height: 16.0),
             _buildFilters(),
@@ -211,13 +221,6 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.blue,
         onTap: _onNavigationItemSelected,
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Acción del botón flotante para abrir el chat
-          // Aquí puedes agregar la lógica para abrir el chat
-        },
-        child: Icon(Icons.chat),
       ),
     );
   }
@@ -403,8 +406,7 @@ class _HomeScreenState extends State<HomeScreen> {
         }
 
         if (searchText.isNotEmpty &&
-            !repuesto.nombre.toLowerCase().contains(searchText.toLowerCase()) &&
-            !repuesto.descripcion.toLowerCase().contains(searchText.toLowerCase())) {
+            !repuesto.nombre.toLowerCase().contains(searchText.toLowerCase())) {
           return false;
         }
 
@@ -414,26 +416,5 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class ChatScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Chat con GIGATALLER'),
-      ),
-      body: Center(
-        child: Text(
-          '¡Bienvenido a GIGATALLER, Zacatecoluca!\n¿En qué podemos ayudarte hoy?',
-          style: TextStyle(fontSize: 20.0),
-          textAlign: TextAlign.center,
-        ),
-      ),
-    );
-  }
-}
 
-void main() {
-  runApp(MaterialApp(
-    home: HomeScreen(),
-  ));
-}
+

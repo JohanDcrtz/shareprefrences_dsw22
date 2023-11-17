@@ -8,7 +8,7 @@ class PerfilScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Perfil del Taller'),
-        automaticallyImplyLeading: false, // Oculta la flecha de retroceso
+        automaticallyImplyLeading: false, // Esto oculta el botón de retroceso
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -61,7 +61,7 @@ class PerfilScreen extends StatelessWidget {
         ),
         SizedBox(height: 16.0),
         Text(
-          'Nombre del Taller',
+          'GIGA Taller ',
           style: TextStyle(
             fontSize: 20.0,
             fontWeight: FontWeight.bold,
@@ -111,6 +111,7 @@ class PerfilScreen extends StatelessWidget {
         SizedBox(height: 8.0),
         Text('Lunes a Viernes: 8:00 AM - 6:00 PM'),
         Text('Sábados: 9:00 AM - 1:00 PM'),
+        Text('Calle Principal, Zacatecoluca'),
       ],
     );
   }
