@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'screens/home.dart';
 
 void main() {
@@ -9,6 +10,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Inventario de Repuestos',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
       home: HomeScreen(),
     );
   }
