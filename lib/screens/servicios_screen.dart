@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:shareprefrences_dsw22/screens/home.dart';
 import 'package:shareprefrences_dsw22/screens/perfil_screen.dart';
 
-
 class ServiciosScreen extends StatefulWidget {
   @override
   _ServiciosScreenState createState() => _ServiciosScreenState();
@@ -32,21 +31,25 @@ class _ServiciosScreenState extends State<ServiciosScreen> {
                 'Cambio de Aceite',
                 'Realizamos cambios de aceite con productos de alta calidad.',
                 Icons.local_car_wash,
+                'Detalles sobre Cambio de Aceite: Precio: \$39.99, Duración: 30 minutos',
               ),
               _buildServicioCard(
                 'Reparación de Frenos',
                 'Ofrecemos servicios de reparación y mantenimiento de sistemas de frenos.',
                 Icons.stop_circle,
+                'Detalles sobre Reparación de Frenos: Precio: \$89.99, Duración: 1 hora',
               ),
               _buildServicioCard(
                 'Alineación y Balanceo',
                 'Ajustamos la alineación y balanceo de las ruedas para un manejo suave.',
                 Icons.format_line_spacing,
+                'Detalles sobre Alineación y Balanceo: Precio: \$59.99, Duración: 45 minutos',
               ),
               _buildServicioCard(
                 'Reparación de Motor',
                 'Realizamos diagnósticos y reparaciones en el sistema del motor.',
                 Icons.build,
+                'Detalles sobre Reparación de Motor: Precio: \$129.99, Duración: 2 horas',
               ),
               SizedBox(height: 16.0),
               ElevatedButton(
@@ -101,7 +104,7 @@ class _ServiciosScreenState extends State<ServiciosScreen> {
     );
   }
 
-  Widget _buildServicioCard(String title, String description, IconData icon) {
+  Widget _buildServicioCard(String title, String description, IconData icon, String detalles) {
     return Card(
       elevation: 3.0,
       margin: EdgeInsets.symmetric(vertical: 8.0),
@@ -135,8 +138,7 @@ class _ServiciosScreenState extends State<ServiciosScreen> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // Lógica para ver más detalles del servicio
-                    // Puedes implementar la lógica según tus necesidades
+                    _showDetallesDialog(context, detalles);
                   },
                   child: Text('Detalles'),
                 ),
@@ -166,14 +168,34 @@ class _ServiciosScreenState extends State<ServiciosScreen> {
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => HomeScreen()),
-       );// Navegar a la pantalla de Repuestos
+        ); // Navegar a la pantalla de Repuestos
         break;
       case 2:
-      Navigator.push(
+        Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => PerfilScreen()),
-       );
+        );
         break;
     }
+  }
+
+  void _showDetallesDialog(BuildContext context, String detalles) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Detalles del Servicio'),
+          content: Text(detalles),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cerrar'),
+            ),
+          ],
+        );
+      },
+    );
   }
 }
