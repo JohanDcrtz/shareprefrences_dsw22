@@ -13,6 +13,10 @@ class _ServiciosScreenState extends State<ServiciosScreen> {
   String selectedTipoServicio = 'Todos';
   List<String> tiposDeServicio = ['Todos', 'Mantenimiento', 'Reparación', 'Personalizado'];
 
+  TextEditingController nombreController = TextEditingController();
+  TextEditingController telefonoController = TextEditingController();
+  TextEditingController fechaController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,13 +56,6 @@ class _ServiciosScreenState extends State<ServiciosScreen> {
                 'Detalles sobre Reparación de Motor: Precio: \$129.99, Duración: 2 horas',
               ),
               SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: () {
-                  // Lógica para solicitar un servicio específico
-                  // Puedes implementar la lógica según tus necesidades
-                },
-                child: Text('Solicitar Servicio'),
-              ),
             ],
           ),
         ),
@@ -144,8 +141,7 @@ class _ServiciosScreenState extends State<ServiciosScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // Lógica para solicitar el servicio
-                    // Puedes implementar la lógica según tus necesidades
+                    _showCitaFormulario(context, title);
                   },
                   child: Text('Solicitar'),
                 ),
@@ -192,6 +188,55 @@ class _ServiciosScreenState extends State<ServiciosScreen> {
                 Navigator.of(context).pop();
               },
               child: Text('Cerrar'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void _showCitaFormulario(BuildContext context, String servicio) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Programar Cita para $servicio'),
+          content: Column(
+            children: [
+              TextField(
+                controller: nombreController,
+                decoration: InputDecoration(labelText: 'Nombre'),
+              ),
+              TextField(
+                controller: telefonoController,
+                decoration: InputDecoration(labelText: 'Teléfono'),
+                keyboardType: TextInputType.phone,
+              ),
+              TextField(
+                controller: fechaController,
+                decoration: InputDecoration(labelText: 'Fecha y Hora'),
+                keyboardType: TextInputType.datetime,
+              ),
+            ],
+          ),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                // Lógica para enviar la información de la cita
+                // Puedes implementar la lógica según tus necesidades
+                print('Cita programada para $servicio:');
+                print('Nombre: ${nombreController.text}');
+                print('Teléfono: ${telefonoController.text}');
+                print('Fecha y Hora: ${fechaController.text}');
+                Navigator.of(context).pop();
+              },
+              child: Text('Programar Cita'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('Cancelar'),
             ),
           ],
         );
